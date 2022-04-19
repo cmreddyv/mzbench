@@ -1,0 +1,62 @@
+{
+  "name": "mzbench-dashboard",
+  "version": "0.0.1",
+  "description": "Dashboard for mzbench",
+  "main": "js/app.js",
+  "dependencies": {
+    "babel-core": "~5.6.0",
+    "uglify-js": "~2.6.0",
+    "flux": "^2.0.0",
+    "react": "~15.4.*",
+    "react-dom": "~15.4.*",
+    "prop-types": "^15.*.*",
+    "react-imageloader": "~2.1.0",
+    "react-autosuggest": "~9.0.*",
+    "babelify": "~6.1.3",
+    "browserify": "~10.2.0",
+    "director": "^1.2.0",
+    "envify": "~3.0.0",
+    "es6ify": "~1.0.0",
+    "highlight.js": "^8.6.0",
+    "keymirror": "~0.*.*",
+    "moment": "^2.10.0",
+    "moment-duration-format": "^1.3.0",
+    "moment-timezone": "^0.4.0",
+    "phantom": "^2.1.11",
+    "phantomjs": "^2.1.7",
+    "react-ace": "~4.3.*",
+    "brace": "~0.5.1",
+    "react-tag-input": "^4.7.*",
+    "reactify": "^0.15",
+    "indent-adder": "0.1.1",
+    "pegjs": "~0.10.0",
+    "watchify": "~3.0.0",
+    "rc-menu": "~5.0.*",
+    "react-edit-inline": "~1.0.*",
+    "react-bootstrap": "~0.31.0"
+  },
+  "scripts": {
+    "start": "watchify -o ../priv/http_root/js/bundle.js -v -d .",
+    "test": "mocha test/testChecker.js",
+    "compile-test": "node_modules/babel-cli/bin/babel.js --presets es2015 js/utils/BenchChecker.js > test/es5Checker.js",
+    "phantom": "browserify . | browserify -t es6ify -o ../priv/http_root/js/bundle.min.js",
+    "build": "NODE_ENV=production browserify . | uglifyjs -cm > ../priv/http_root/js/bundle.min.js"
+  },
+  "browserify": {
+    "transform": [
+      "babelify",
+      "reactify",
+      "envify"
+    ],
+    "files": [
+      "js/**/*.js",
+      "js/app.js"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "mocha": "^3.2.0",
+    "pegjs": "^0.10.0"
+  }
+}

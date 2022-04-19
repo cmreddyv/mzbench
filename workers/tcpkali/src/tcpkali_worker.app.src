@@ -1,0 +1,14 @@
+%% -*- mode: erlang -*-
+{application, tcpkali_worker,
+ [
+  {description, "MZBench tcpkali-worker"},
+  {vsn, "0.3.6"},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  erlexec,
+                  jiffy,
+                  cbor
+                 ]},
+  {env, []}
+ ]}.
